@@ -1,0 +1,21 @@
+/*nonequijoin
+
+плюсы: 1. 
+минусы: 1. 
+
+факт: 1. работает только с on
+      2. объеденение таблиц с помощью неравенств
+
+*/
+
+select e.first_name, e.salary, j.min_salary, j.max_salary 
+from  employees e join jobs j on (e.job_id = j.job_id and salary*2 <j.max_salary);
+
+select e.first_name, e.salary, j.min_salary, j.max_salary 
+from  employees e join jobs j on (e.job_id = j.job_id and salary=j.max_salary);
+
+select e.first_name, e.salary, j.min_salary, j.max_salary 
+from  employees e join jobs j on (e.job_id = j.job_id and salary<j.max_salary);
+
+select e.first_name, e.salary, j.min_salary, j.max_salary 
+from  employees e join jobs j on (e.job_id = j.job_id and salary between j.min_salary+2000 and j.max_salary+3000);
