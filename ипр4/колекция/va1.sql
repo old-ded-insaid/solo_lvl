@@ -1,0 +1,33 @@
+/*
+Размер задается при создании
+Индексируется с 1
+Инициализируется конструктором collection_type ( [ value [, value ]... ] )
+Если параметры в конструктор не передаются, возвращается пустая коллекция
+Datatype – это любой тип данных, кроме ref cursor
+
+Используется, если:
+Знаем максимально возможное количество элементов
+Доступ к элементам последовательный
+*/
+declare
+  type ass is varray(4) of varchar2(20);
+  ass1 ass := ass('була', 'нас', 'дим','я');
+begin
+  for i in ass1.first..ass1.last
+    loop
+  dbms_output.put_line(i || ' ' ||ass1(i));
+  end loop;
+  dbms_output.put_line( '--- ');
+  ass1(3) := 'ард';
+  ass1(4) := 'al';
+  for i in ass1.first..ass1.last
+    loop
+  dbms_output.put_line(i || ' ' ||ass1(i));
+  end loop;
+  dbms_output.put_line( '--- ');
+  ass1 := ass('я', 'ты','он','она');
+  for i in ass1.first..ass1.last
+    loop
+  dbms_output.put_line(i || ' ' ||ass1(i));
+  end loop;
+end;
