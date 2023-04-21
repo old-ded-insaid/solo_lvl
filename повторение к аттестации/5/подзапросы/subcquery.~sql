@@ -1,0 +1,8 @@
+--
+
+select * from employees e
+where e.salary > (select avg(e2.salary) from employees e2 );
+
+select (select min(min_salary) from jobs)
+     , (select max(length(e.first_name)) from employees e) length_name
+  from dual; 

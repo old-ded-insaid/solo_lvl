@@ -1,0 +1,13 @@
+
+with sal as (
+    select e.employee_id
+         , e.first_name
+         , sum(j.min_salary) as summ
+      from employees e
+         , JOBS j
+     where e.job_id = j.job_id
+     group by e.employee_id, e.first_name )
+select *
+  from sal
+ where sal.summ = (select min(summ) from  sal )
+; 

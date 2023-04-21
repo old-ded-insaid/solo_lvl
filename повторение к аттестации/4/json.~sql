@@ -1,0 +1,25 @@
+native json 
+declare
+  qwe json_object_t := new json_object_t;
+  asd number := 123;
+  zxc varchar2(10) := 'zxccvb';
+begin
+  qwe.put('nu', asd);
+  qwe.put('va', zxc);
+  dbms_output.put_line(qwe.to_string);
+  dbms_output.put_line(qwe.get_String('va') || ' qwe.get_String(va)');
+  dbms_output.put_line(qwe.get_Number('nu') || ' qwe.get_Number(va)');
+end;
+
+
+declare
+  qwe json_object_t := new json_object_t;
+  asd number := 123;
+  zxc varchar2(10) := 'zxccvb';
+begin
+  qwe.put('nu', asd);
+  qwe.put('va', zxc);
+  dbms_output.put_line(qwe.to_string);
+  dbms_output.put_line(qwe.get_String('va') || ' qwe.get_String(va)');
+  dbms_output.put_line(qwe.get_Number('nu') || ' qwe.get_Number(va)');
+end;

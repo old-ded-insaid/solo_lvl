@@ -1,0 +1,40 @@
+/*declare
+type zcx is table of employees%rowtype;
+t_zxc zcx := zcx();
+l_sad employees%rowtype;
+begin
+select *  into l_sad from employees e where e.employee_id = 150;
+
+t_zxc.extend;
+t_zxc(t_zxc.first) := l_sad;
+
+dbms_output.put_line(t_zxc(1).employee_id);
+
+end;*/
+/*
+declare
+type zcx is table of employees%rowtype;
+t_zxc zcx := zcx();
+l_sad employees%rowtype;
+begin
+select *   bulk collect into t_zxc from employees e where e.employee_id = 150;
+/*
+t_zxc.extend;
+t_zxc(t_zxc.first) := l_sad;
+
+dbms_output.put_line(t_zxc(1).employee_id);
+
+end;
+
+*/
+declare
+  type emp_t is table of employees%rowtype;
+  r_emp emp_t := emp_t();
+begin
+  for re in (select * from employees e where e.employee_id in (150,151,152)) loop
+    r_emp.extend;
+    r_emp(r_emp.last) := re;
+    dbms_output.put_line(r_emp(r_emp.last).employee_id);
+  end loop;
+  dbms_output.put_line(r_emp.count);
+end;
